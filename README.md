@@ -61,7 +61,7 @@ Please read [CONTRIBUTING.md](https://github.com/lycano/cryofall-mod-templates/b
 
 * **Lycano** - *Initial work* - [Lycano](https://github.com/lycano)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/lycano/cryofall-mod-templates/contributors) who participated in this project.
 
 ## Acknowledgments
 
