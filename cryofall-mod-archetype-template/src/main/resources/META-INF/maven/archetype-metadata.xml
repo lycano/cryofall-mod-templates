@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="basic">
+  <requiredProperties>
+    <requiredProperty key="cryofall-mod-game">
+      <defaultValue>CryoFall</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="artifactId">
+      <defaultValue>MyMod</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="groupId">
+      <defaultValue>MyMod</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="version">
+      <defaultValue>0.0.1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-id">
+      <defaultValue>mymod</defaultValue> <!-- this should be lowercase -->
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-title">
+      <defaultValue>Your mod title</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-description">
+      <defaultValue>New mod for CBND.</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-author">
+      <defaultValue>Your name</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-updated">
+      <defaultValue>01.01.2018</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="cryofall-mod-modtype">
+      <defaultValue>2</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+
+  <fileSets>
+    <fileSet filtered="true" packaged="true">
+      <directory></directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</archetype-descriptor>

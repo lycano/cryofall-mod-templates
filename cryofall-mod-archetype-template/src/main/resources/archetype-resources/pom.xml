@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+    <packaging>pom</packaging>
+    
+    <properties>
+      <cryofall.mod.template>${rootArtifactId}</cryofall.mod.template>
+      <cryofall.mod.game>${cryofall-mod-game}</cryofall.mod.game>
+      <cryofall.mod.id>${cryofall-mod-id}</cryofall.mod.id>
+      <cryofall.mod.title>${cryofall-mod-title}</cryofall.mod.title>
+      <cryofall.mod.description>${cryofall-mod-description}</cryofall.mod.description>
+      <cryofall.mod.author>${cryofall-mod-author}</cryofall.mod.author>
+      <cryofall.mod.updated>${cryofall-mod-updated}</cryofall.mod.updated>
+      <cryofall.mod.modtype>${cryofall-mod-modtype}</cryofall.mod.modtype>
+      <cryofall.packageName>${artifactId}</cryofall.packageName> <!-- The name of the packaged mpk file (without extension). Should be the same as artifactId -->
+      <assembly.id>mpk</assembly.id>
+    </properties>
+
+    <name>${cryofall-mod-title}</name>
+    <url>http://atomictorch.com/</url>
+    
+    <build>
+      <finalName>${cryofall.packageName}</finalName>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.1.1</version>
+          <configuration>
+            <descriptors>
+              <descriptor>package.xml</descriptor>
+            </descriptors>
+            <appendAssemblyId>false</appendAssemblyId>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <configuration>
+                  <target>
+                    <copy file="${project.build.directory}/${project.build.finalName}.zip" tofile="${project.basedir}/${project.build.finalName}.mpk" />
+                    <delete dir="${project.build.directory}"/>
+                    <echo message="CryoFall MPK created at location: ${project.basedir}/${project.build.finalName}"/>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.1.1</version>
+            <executions>
+              <execution>
+                <id>default-jar</id>
+                <phase>never</phase>
+                <configuration>
+                  <finalName>unwanted</finalName>
+                  <classifier>unwanted</classifier>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+      </plugins>
+    </build>
+</project>
