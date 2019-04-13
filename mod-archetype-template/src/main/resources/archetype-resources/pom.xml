@@ -2,34 +2,37 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
-    <packaging>pom</packaging>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${artifactId}</artifactId>
+    <version>\${version}</version>
     
     <properties>
-      <cryofall.mod.template>${rootArtifactId}</cryofall.mod.template>
-      <cryofall.mod.game>${cryofall-mod-game}</cryofall.mod.game>
-      <cryofall.mod.id>${cryofall-mod-id}</cryofall.mod.id>
-      <cryofall.mod.title>${cryofall-mod-title}</cryofall.mod.title>
-      <cryofall.mod.description>${cryofall-mod-description}</cryofall.mod.description>
-      <cryofall.mod.author>${cryofall-mod-author}</cryofall.mod.author>
-      <cryofall.mod.updated>${cryofall-mod-updated}</cryofall.mod.updated>
-      <cryofall.mod.modtype>${cryofall-mod-modtype}</cryofall.mod.modtype>
-      <cryofall.packageName>${artifactId}</cryofall.packageName> <!-- The name of the packaged mpk file (without extension). Should be the same as artifactId -->
+      <cryofall.mod.template>\${rootArtifactId}</cryofall.mod.template>
+      <cryofall.mod.game>\${cryofall-mod-game}</cryofall.mod.game>
+      <cryofall.mod.id>\${cryofall-mod-id}</cryofall.mod.id>
+      <cryofall.mod.title>\${cryofall-mod-title}</cryofall.mod.title>
+      <cryofall.mod.description>\${cryofall-mod-description}</cryofall.mod.description>
+      <cryofall.mod.author>\${cryofall-mod-author}</cryofall.mod.author>
+      <cryofall.mod.updated>\${cryofall-mod-updated}</cryofall.mod.updated>
+      <cryofall.mod.modtype>\${cryofall-mod-modtype}</cryofall.mod.modtype>
+      <cryofall.packageName>\${artifactId}</cryofall.packageName> <!-- The name of the packaged mpk file (without extension). Should be the same as artifactId -->
       <assembly.id>mpk</assembly.id>
     </properties>
 
-    <name>${cryofall-mod-title}</name>
+    <name>\${cryofall-mod-title}</name>
     <url>http://atomictorch.com/</url>
+
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     
     <build>
-      <finalName>${cryofall.packageName}</finalName>
+      <finalName>\${cryofall.packageName}</finalName>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>${assembly}</version>
           <configuration>
             <descriptors>
               <descriptor>package.xml</descriptor>
@@ -53,15 +56,15 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.8</version>
+            <version>${antrun}</version>
             <executions>
               <execution>
                 <phase>package</phase>
                 <configuration>
                   <target>
-                    <copy file="${project.build.directory}/${project.build.finalName}.zip" tofile="${project.basedir}/${project.build.finalName}.mpk" />
-                    <delete dir="${project.build.directory}"/>
-                    <echo message="CryoFall MPK created at location: ${project.basedir}/${project.build.finalName}"/>
+                    <copy file="\${project.build.directory}/\${project.build.finalName}.zip" tofile="\${project.basedir}/\${project.build.finalName}.mpk" />
+                    <delete dir="\${project.build.directory}"/>
+                    <echo message="CryoFall MPK created at location: \${project.basedir}/\${project.build.finalName}"/>
                   </target>
                 </configuration>
                 <goals>
@@ -73,7 +76,7 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.1</version>
+            <version>${jar}</version>
             <executions>
               <execution>
                 <id>default-jar</id>

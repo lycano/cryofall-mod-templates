@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.lycano.cryofall-mod-templates</groupId>
+  <artifactId>mod-archetype-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>CryoFall Mod Archetype Templates parent POM</name>
+  <description>CryoFall Mod archetype templates build through maven archetypes.</description>
+  <url>https://github.com/lycano/cryofall-mod-templates/tree//mvn-archetypes/</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- github plugin configuration properties -->
+    <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+    <github.global.server>github-cryofall-mod-templates</github.global.server>  
+    <!-- enable dryRun for local debug -->
+    <github.site.dryRun>true</github.site.dryRun>
+    <!-- disable webpage processing -->
+    <github.site.noJekyll>true</github.site.noJekyll>
+
+    <!-- maven plugin version definitions -->
+    <mvn.plugin.version.archetype>3.0.1</mvn.plugin.version.archetype>
+    <mvn.plugin.version.resources>3.0.2</mvn.plugin.version.resources>
+    <mvn.plugin.version.deploy>2.8.2</mvn.plugin.version.deploy>
+    <mvn.plugin.version.github-site>0.12</mvn.plugin.version.github-site>
+  </properties>
+
+  <modules>
+    <module>mod-archetype-template</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:https://github.com/lycano/cryofall-mod-templates.git</connection>
+    <developerConnection>scm:git:https://github.com/lycano/cryofall-mod-templates.git</developerConnection>
+    <url>https://github.com/lycano/cryofall-mod-templates/tree/${project.scm.tag}</url>
+    <tag>maven-archetypes</tag>
+  </scm>
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/lycano/cryofall-mod-templates/issues</url>
+  </issueManagement>
+  <distributionManagement>
+      <repository>
+          <id>internal.repo</id>
+          <name>Temporary Staging Repository</name>
+          <url>file://${project.build.directory}/mvn-repo</url>
+      </repository>
+  </distributionManagement>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>${mvn.plugin.version.archetype}</version>
+      </extension>
+    </extensions>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <filters>
+      <filter>../plugin-versions.properties</filter>
+    </filters>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>${mvn.plugin.version.archetype}</version>
+          <configuration>
+            <ignoreEOLStyle>true</ignoreEOLStyle>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${mvn.plugin.version.resources}</version>
+          <configuration>
+            <escapeString>\</escapeString>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${mvn.plugin.version.deploy}</version>
+          <configuration>
+            <altDeploymentRepository>internal.repo::default::file://${user.dir}/mvn-repo</altDeploymentRepository>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>${mvn.plugin.version.github-site}</version>
+        <configuration>
+            <!-- git commit message -->
+            <message>CryoFall Mod Archetype Template artifacts for ${project.version}</message>
+            <!-- matches distribution management repository url above -->
+            <outputDirectory>${user.dir}/mvn-repo</outputDirectory>
+            <!-- remote branch name -->
+            <branch>refs/heads/mvn-repo</branch>
+            <includes>
+              <include>**/*</include>
+            </includes>
+            <!-- github repo name -->
+            <repositoryName>cryofall-mod-templates</repositoryName>
+            <!-- github username  -->
+            <repositoryOwner>lycano</repositoryOwner>
+        </configuration>
+        <executions>
+          <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>deploy</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
