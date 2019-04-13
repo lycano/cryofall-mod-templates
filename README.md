@@ -13,7 +13,7 @@ You need to have `maven 3.x` and `Java Runtime 8` installed.
 ### Quick-Start for local testing
 
 1) Clone repo somewhere
-2) Run inside cloned repo `mvn -f cryofall-mod-archetype-template/pom.xml clean install archetype:update-local-catalog` \
+2) Run inside cloned repo `mvn -f mod-archetype-template/pom.xml clean install archetype:update-local-catalog` \
 This will build the archetype and update your local catalog which we will need next
 3) Go to your Project Folder and generate a new mod using previously installed archetype
 ```
