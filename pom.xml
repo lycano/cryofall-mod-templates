@@ -103,7 +103,7 @@
         <version>${mvn.plugin.version.github-site}</version>
         <configuration>
             <!-- git commit message -->
-            <message>CryoFall Mod Archetype Template artifacts for ${project.version}</message>
+            <message>Deployed CryoFall mod archetype template artifacts using deployment version ${project.version}</message>
             <!-- matches distribution management repository url above -->
             <outputDirectory>${user.dir}/mvn-repo</outputDirectory>
             <!-- remote branch name -->
