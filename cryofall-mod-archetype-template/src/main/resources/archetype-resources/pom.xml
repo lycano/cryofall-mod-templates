@@ -35,6 +35,11 @@
               <descriptor>package.xml</descriptor>
             </descriptors>
             <appendAssemblyId>false</appendAssemblyId>
+            
+            <!-- Turn off compression -->
+            <archiverConfig>
+                <compress>false</compress>
+            </archiverConfig>
           </configuration>
           <executions>
             <execution>
