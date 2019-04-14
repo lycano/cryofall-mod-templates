@@ -20,7 +20,7 @@ mod-templates \
 |--> repo \
 |--> playground
 
-In playground you can generate a new mod safely. Make sure you installed the archetypes first by running `mvn clean install archetype:update-local-catalog` in repo dir after cloning having mvn-archetype as active branch.
+In playground you can generate a new mod safely. Make sure you installed the archetypes first by running `mvn clean install archetype:update-local-catalog` in repo dir after cloning having `mvn-archetype` as active branch.
 
 ```
 mvn archetype:generate \
