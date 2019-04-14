@@ -12,10 +12,12 @@ You need to have `maven 3.x` and `Java Runtime 8` installed. Please make sure th
 
 ### Quick-Start for local testing
 
-1) Clone repo somewhere
-2) Run inside cloned repo `mvn -f mod-archetype-template/pom.xml clean install archetype:update-local-catalog` \
-This will build the archetype and update your local catalog which we will need in the next step
-3) Go to your Project Folder - preferably your GameRoot of CryoFall Editor - and generate a new mod using previously installed archetype
+1) Create dir `mod-templates/repo` and `mod-templates/playground`.
+2) Clone repo inside `mod-templates/repo` and checkout `mvn-archetype` branch
+3) Change to dir repo and run `mvn -f mod-archetype-template/pom.xml clean install archetype:update-local-catalog` \
+This will build the archetype and update your local catalog which we will need in the next step.
+4) Go to your Project Folder - preferably your GameRoot of CryoFall Editor - and generate a new mod using previously installed archetype or use previously created playground folder for testing.
+
 ```
 mvn archetype:generate \
   -DarchetypeCatalog=local \
