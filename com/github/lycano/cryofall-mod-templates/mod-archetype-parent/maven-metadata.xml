@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.github.lycano.cryofall-mod-templates</groupId>
+  <artifactId>mod-archetype-parent</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190414005648</lastUpdated>
+  </versioning>
+</metadata>
