@@ -10,7 +10,17 @@ The idea behind this github repository is to provide a collection of pre-defined
 The following listing shall display how this repository could evolve over time.
 
 #### Example
-The following command would generate you a mod called MyMod from mod-archetype-template or if archetypeArtifactId is changed using a different starter-package given you have installed them locally. A how-to will be included in the wiki or as for now checkout README in branch [mvn-archetypes](https://github.com/lycano/cryofall-mod-templates/tree/mvn-archetypes).
+The following command would generate you a mod called MyMod from mod-archetype-template or if archetypeArtifactId is changed using a different starter-package given you have installed them locally. A how-to will be included in the wiki. As for now checkout README in branch [mvn-archetypes](https://github.com/lycano/cryofall-mod-templates/tree/mvn-archetypes).
+
+Make sure you don't execute this command in your checked out repository or MyMod will be added as submodule to mod-archetype-parent which you do not want. I recommend checking out the repo in a subfolder.
+
+I.e. create:
+
+mod-templates \
+|--> repo \
+|--> playground
+
+In playground you can generate a new mod safely. Make sure you installed the archetypes first by running `mvn clean install archetype:update-local-catalog` in repo dir after cloning having mvn-archetype as active branch.
 
 ```
 mvn archetype:generate \
