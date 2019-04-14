@@ -15,7 +15,7 @@ The following command would generate you a mod called MyMod from mod-archetype-t
 ```
 mvn archetype:generate \
   -DarchetypeCatalog=local \
-  -DarchetypeGroupId=com.github.lycano.cryofall \
+  -DarchetypeGroupId=com.github.lycano.cryofall-mod-templates \
   -DarchetypeArtifactId=mod-archetype-template \
   -DarchetypeVersion=1.0 \
   -DgroupId=CryoFall.Data.Mods.MyMod \
