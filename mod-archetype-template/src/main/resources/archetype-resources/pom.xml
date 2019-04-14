@@ -7,6 +7,7 @@
     <version>\${version}</version>
     
     <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <cryofall.mod.template>\${rootArtifactId}</cryofall.mod.template>
       <cryofall.mod.game>\${cryofall-mod-game}</cryofall.mod.game>
       <cryofall.mod.id>\${cryofall-mod-id}</cryofall.mod.id>
@@ -22,10 +23,6 @@
     <name>\${cryofall-mod-title}</name>
     <url>http://atomictorch.com/</url>
 
-    <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    
     <build>
       <finalName>\${cryofall.packageName}</finalName>
       <plugins>
